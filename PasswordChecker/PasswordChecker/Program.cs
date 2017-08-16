@@ -56,7 +56,11 @@ namespace PasswordChecker
                     // IndexOf bi opet vratio poziciju iste cifre, te treba pretraziti sve nakon te pozicije
                     int index2 = password.Substring(index1 + 1).IndexOf((char)('0' + diff));
                     if (index2 == -1)
-                        continue;
+                    {
+                        index2 = password.Substring(0, index1).IndexOf((char)('0' + diff));
+                        if (index2 == -1)
+                            continue;
+                    }
 
                     // sadrzi obe cifre koje daju duzinu, izadji iz petlje, ispisi gresku
                     incorrect = true;
