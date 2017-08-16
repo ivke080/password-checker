@@ -27,7 +27,7 @@ namespace PasswordChecker
                     continue;
                 }
                 // 6. tacka je resena uz pomoc linq izraza
-                // Pobrojao sam pojavljivanje svakog karaktera, sortirao opadajuce, ako se prvi pojavljuje 3 ili vise puta, ne valja sifra, ostale ne treba ispitivati
+                // Pobrojao sam pojavljivanje svakog karaktera, sortirao opadajuce, ako se prvi pojavljuje vise od 3 puta, ne valja sifra, ostale ne treba ispitivati
                 var result = password.GroupBy(c => c).Select(c => new { Char = c.Key, Count = c.Count() }).OrderByDescending(c => c.Count).First().Count;
 
                 if (result > 3)
